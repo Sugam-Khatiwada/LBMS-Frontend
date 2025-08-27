@@ -10,3 +10,142 @@
 .btn-popout:hover{
   transform: perspective(400px) translateZ(20px);
 }
+
+/* Theme variables & dark-mode overrides */
+:root{
+  --bg: #f0f0f0;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #2563eb; /* blue-600 - neutral primary */
+  --secondary: #06b6d4; /* cyan-500 */
+  --accent: #f59e0b; /* amber-500 */
+  --error: #ff4d4d;
+  --success: #16a34a;
+  --app-name: 'BookHub';
+}
+
+.theme-dark {
+  --bg: #071025;
+  --surface: #0b1220;
+  --text: #e6eef6;
+  --muted: #94a3b8;
+  --primary: #7c3aed;
+  --secondary: #06b6d4;
+  --accent: #f9d56b;
+  --error: #ff6b6b;
+  --success: #22c55e;
+}
+
+/* Librarian theme (applies on top of default or dark) */
+.theme-librarian {
+  --primary: #6d28d9; /* violet-700 - librarian accent */
+  --secondary: #a78bfa; /* violet-300 */
+  --rail-bg: #f7f3ff;
+  --rail-text: #2d1b5f;
+}
+
+.theme-librarian .sidebar-rail { background-color: var(--rail-bg); color: var(--rail-text); }
+.theme-librarian .accent-primary { color: var(--primary); }
+.theme-librarian .bg-accent-primary { background-color: var(--primary); color: white; }
+
+/* Apply base background/text color */
+body{ background-color: var(--bg); color: var(--text); }
+
+/* Global font and UI tweaks for a distinct look */
+html,body,#root{ height:100%; }
+body{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+/* Primary button used across the app */
+.primary-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:0.5rem;
+  padding:0.6rem 1rem; border-radius:0.75rem; font-weight:600; font-size:0.95rem;
+  background: linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 70%, var(--secondary) 30%));
+  color:#fff; box-shadow: 0 6px 18px rgba(99,102,241,0.12); border:none; cursor:pointer;
+}
+.primary-btn:focus{ outline:none; box-shadow:0 8px 22px rgba(99,102,241,0.18); }
+.primary-btn[disabled]{ opacity:0.6; cursor:not-allowed; }
+
+/* Card style for panels */
+.card{
+  background:var(--surface); border-radius:1rem; padding:1rem; box-shadow: 0 6px 18px rgba(15,23,42,0.06); border:1px solid rgba(15,23,42,0.04);
+}
+
+/* Header hero for a more distinctive top bar */
+.header-hero{ background: linear-gradient(90deg, rgba(124,58,237,0.95), rgba(6,182,212,0.9)); color: #fff; }
+.header-hero .text-gray-500{ color: rgba(255,255,255,0.85) !important; }
+.header-hero .text-gray-700{ color: rgba(255,255,255,0.95) !important; }
+.header-hero .bg-white{ background: transparent !important; }
+.header-hero .shadow-sm{ box-shadow: none !important; }
+
+/* Modern rail style */
+.modern-rail{ background: var(--rail-bg); border-radius: 0 1rem 1rem 0; box-shadow: inset 0 1px 0 rgba(255,255,255,0.4); }
+.modern-rail .text-sm{ color: var(--rail-text); }
+
+/* Utility helpers to use CSS vars alongside Tailwind classes */
+.text-primary { color: var(--primary) !important; }
+.bg-primary { background-color: var(--primary) !important; color: #fff !important; }
+.bg-primary-gradient { background: linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 70%, var(--secondary) 30%)) !important; color: #fff !important; }
+.text-secondary { color: var(--secondary) !important; }
+.bg-accent { background-color: var(--accent) !important; color: #111827 !important; }
+
+/* Small utility to tone down default Tailwind blues in some places */
+.btn-ghost-primary { color: var(--primary); border-color: rgba(0,0,0,0.06); background: transparent; }
+
+
+/* Map common light utility classes to dark equivalents when theme is active */
+.theme-dark .bg-white { background-color: var(--surface) !important; }
+.theme-dark .bg-gray-50 { background-color: var(--surface) !important; }
+.theme-dark .text-gray-900, .theme-dark .text-gray-800 { color: var(--text) !important; }
+.theme-dark .text-gray-700, .theme-dark .text-gray-600, .theme-dark .text-gray-500 { color: var(--muted) !important; }
+.theme-dark .border-gray-200 { border-color: rgba(255,255,255,0.06) !important; }
+.theme-dark .shadow { box-shadow: 0 1px 2px rgba(0,0,0,0.6) !important; }
+.theme-dark .bg-blue-50, .theme-dark .bg-blue-100 { background-color: transparent !important; }
+.theme-dark .rounded-xl { border-radius: .75rem; }
+
+/* Buttons and primary/secondary colors */
+.theme-dark .text-blue-600 { color: var(--secondary) !important; }
+.theme-dark .text-blue-500 { color: var(--secondary) !important; }
+.theme-dark .bg-red-500 { background-color: var(--error) !important; }
+.theme-dark .bg-green-600 { background-color: var(--success) !important; }
+
+/* Improve form/control contrast in dark theme */
+.theme-dark input,
+.theme-dark textarea,
+.theme-dark select,
+.theme-dark .card,
+.theme-dark .login-form,
+.theme-dark .search-input{
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+.theme-dark input::placeholder,
+.theme-dark textarea::placeholder{
+  color: var(--muted) !important;
+}
+
+/* Make header hero search clearly visible (white text on subtle translucent bg) */
+.header-hero input[type="search"],
+.header-hero .search-input {
+  background: rgba(255,255,255,0.12) !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,0.16) !important;
+}
+.header-hero input::placeholder,
+.header-hero .search-input::placeholder {
+  color: rgba(255,255,255,0.85) !important;
+}
+.header-hero input:focus,
+.header-hero .search-input:focus {
+  color: #fff !important;
+}
+
+/* Ensure focused form controls in light mode remain readable */
+input:focus,
+textarea:focus,
+select:focus,
+.search-input:focus {
+  color: var(--text) !important;
+  background: var(--surface) !important;
+}

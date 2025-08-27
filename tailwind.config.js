@@ -3,15 +3,18 @@ export default {
    content: ["./src/**/*.{html,js,jsx}"],
    theme: {
      extend: {
-        colors: {
-          primary: '#ff6363',
-          secondary: '#3faffa',
-          accent: '#f9d56b',
-          background: '#f0f0f0',
-          muted: '#e0e0e0',
-          error: '#ff4d4d',
-          success: '#4caf50',
-        },
+         colors: {
+            // Primary/secondary for dark, modern palette
+            primary: '#7c3aed',   // violet-600
+            secondary: '#06b6d4', // cyan-500
+            accent: '#f59e0b',    // amber-500
+            // Background/muted suited for darker themes
+            background: '#0b1220',
+            muted: '#94a3b8',
+            // Feedback
+            error: '#ff6b6b',
+            success: '#22c55e',
+          },
      },
    },
    plugins: [],
