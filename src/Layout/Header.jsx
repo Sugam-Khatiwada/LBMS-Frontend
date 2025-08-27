@@ -120,8 +120,8 @@ export function Header({ onToggleSidebar }) {
         {/* Left column aligned with sidebar: show branding above sidebar area on lg+ */}
         <div className="hidden lg:flex w-56 items-center">
           <div className="flex items-center gap-3">
-            <Logo size={10} showText={false} />
-            <span className="text-lg font-semibold" style={{ color: 'var(--text)' }}>{APP_NAME}</span>
+              <Logo size={10} showText={false} />
+              <span className="ml-2 text-lg font-semibold" style={{ color: 'var(--text)' }}>{APP_NAME}</span>
           </div>
         </div>
 
@@ -203,35 +203,35 @@ export function Header({ onToggleSidebar }) {
               </button>
 
               {accountOpen && (
-                <div className="fixed inset-0 z-60 flex items-center justify-center" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center" role="dialog" aria-modal="true">
                   <div className="absolute inset-0 bg-black/40" onClick={closeAccount} />
-                  <div className="relative z-20 w-full max-w-sm rounded-2xl bg-white p-5 shadow-xl">
+                  <div className="relative z-[10000] w-full max-w-sm rounded-2xl bg-[var(--surface)] p-5 shadow-xl">
                     <div className="mb-4 flex items-center justify-between">
-                      <h2 className="text-lg font-semibold text-gray-900">Account</h2>
-                      <button type="button" onClick={closeAccount} className="rounded-full p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-700">×</button>
+                      <h2 className="text-lg font-semibold text-[--text]">Account</h2>
+                      <button type="button" onClick={closeAccount} className="rounded-full p-1 text-[--muted] hover:bg-[var(--surface)]/60 hover:text-[--text]">×</button>
                     </div>
                     <div className="space-y-3">
                       <div>
-                        <div className="text-xs font-semibold text-gray-500">Name</div>
-                        <div className="text-sm text-gray-800">{user?.name || user?.fullName || '-'}</div>
+                        <div className="text-xs font-semibold text-[--muted]">Name</div>
+                        <div className="text-sm text-[--text]">{user?.name || user?.fullName || '-'}</div>
                       </div>
                       <div>
-                        <div className="text-xs font-semibold text-gray-500">Email</div>
-                        <div className="text-sm text-gray-800">{user?.email || user?.username || '-'}</div>
+                        <div className="text-xs font-semibold text-[--muted]">Email</div>
+                        <div className="text-sm text-[--text]">{user?.email || user?.username || '-'}</div>
                       </div>
                       <div>
-                        <div className="text-xs font-semibold text-gray-500">Role</div>
-                        <div className="text-sm text-gray-800">{Array.isArray(user?.roles) ? user.roles.join(', ') : (user?.role || (isBorrower ? 'Borrower' : '-'))}</div>
+                        <div className="text-xs font-semibold text-[--muted]">Role</div>
+                        <div className="text-sm text-[--text]">{Array.isArray(user?.roles) ? user.roles.join(', ') : (user?.role || (isBorrower ? 'Borrower' : '-'))}</div>
                       </div>
                       {user?.createdAt && (
                         <div>
-                          <div className="text-xs font-semibold text-gray-500">Member since</div>
-                          <div className="text-sm text-gray-800">{new Date(user.createdAt).toLocaleDateString()}</div>
+                          <div className="text-xs font-semibold text-[--muted]">Member since</div>
+                          <div className="text-sm text-[--text]">{new Date(user.createdAt).toLocaleDateString()}</div>
                         </div>
                       )}
                     </div>
                     <div className="mt-6 flex justify-end gap-2">
-                      <button type="button" onClick={closeAccount} className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Close</button>
+                      <button type="button" onClick={closeAccount} className="rounded-md border border-[rgba(0,0,0,0.06)] px-4 py-2 text-sm font-medium text-[--muted] hover:bg-[var(--surface)]/60">Close</button>
                     </div>
                   </div>
                 </div>

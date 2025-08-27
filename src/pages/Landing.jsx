@@ -7,127 +7,84 @@ export default function Landing() {
 	return (
 		<main className="min-h-screen bg-gradient-to-b from-primary/10 to-transparent text-[--text] dark:text-white">
 			{/* Header */}
-			<header className="border-b border-slate-200/60 bg-[var(--surface)]/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-10">
+			<header className="header-hero sticky top-0 z-10">
 				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
 					<div className="flex items-center gap-3">
 						<Logo size={8} showText={true} className="items-center" />
 					</div>
 					<nav className="hidden sm:flex items-center gap-4 text-sm">
-						<Link to="/login" className="text-[--muted] hover:text-[--text] rounded-xl bg-secondary w-[100px] text-center h-[30px] font-semibold py-1 ">
-							Login
-						</Link>
+						<Link to="/login" className="rounded-md px-4 py-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/20">Login</Link>
 					</nav>
 				</div>
 			</header>
 
-			{/* Hero */}
-			<section className="relative">
-				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
-					<div>
-						<h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[--text]">
-							Manage your library with ease
-						</h1>
-						<p className="mt-4 text-base sm:text-lg text-[--muted] leading-relaxed">
-							A simple, fast, and reliable Library Management System for
-							librarians to track books, members, and borrow records—all in one
-							place.
-						</p>
-						<div className="mt-6 flex flex-wrap gap-3">
-							<Link
-								to="/login"
-								className="inline-flex items-center justify-center rounded-md bg-primary-gradient px-5 py-2.5 text-white font-medium shadow-sm hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-							>
-								Get Started
-							</Link>
-							<a
-							href="#features"
-							className="inline-flex items-center justify-center rounded-md border border-[rgba(0,0,0,0.06)] px-5 py-2.5 text-[--muted] font-medium hover:bg-[var(--surface)]/60"
-							>
-								Learn more
-							</a>
-						</div>
-						<div className="mt-6 flex items-center gap-6 text-sm text-[--muted]">
-							<div>
-								<span className="font-semibold text-slate-900">Secure</span> auth
-							</div>
-							<div>
-								<span className="font-semibold text-slate-900">Fast</span> search
-							</div>
-							<div>
-								<span className="font-semibold text-slate-900">Mobile</span> friendly
-							</div>
-						</div>
-					</div>
-					<div className="relative">
-						<div className="rounded-xl border border-slate-200 bg-[var(--surface)] shadow-sm p-5 sm:p-6">
-							<div className="grid grid-cols-2 gap-3 text-center">
-								<div className="rounded-lg bg-blue-50 p-6">
-									<div className="text-3xl">📚</div>
-									<div className="mt-2 text-sm font-medium text-slate-700">
-										Manage Books
-									</div>
-								</div>
-								<div className="rounded-lg bg-emerald-50 p-6">
-									<div className="text-3xl">🧑‍🤝‍🧑</div>
-									<div className="mt-2 text-sm font-medium text-slate-700">
-										Track Members
-									</div>
-								</div>
-								<div className="rounded-lg bg-amber-50 p-6">
-									<div className="text-3xl">🔄</div>
-									<div className="mt-2 text-sm font-medium text-slate-700">
-										Borrow Records
-									</div>
-								</div>
-								<div className="rounded-lg bg-fuchsia-50 p-6">
-									<div className="text-3xl">📈</div>
-									<div className="mt-2 text-sm font-medium text-slate-700">
-										Insights & Stats
-									</div>
-								</div>
-							</div>
+			{/* New Body - clean, modern marketing layout */}
+			<section className="relative overflow-hidden">
+				{/* Background image (library) */}
+				<div
+					className="absolute inset-0 bg-cover bg-center"
+					style={{
+						backgroundImage: `url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=60')`,
+						filter: 'brightness(0.6)'
+					}}
+					aria-hidden="true"
+				/>
+				{/* Overlay to keep text readable */}
+				<div className="absolute inset-0 bg-gradient-to-b from-[rgba(2,6,20,0.7)] to-[rgba(2,6,20,0.4)]" aria-hidden="true" />
+				<div className="relative py-28">
+					<div className="mx-auto max-w-5xl px-6 text-center">
+						<h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white" style={{ textShadow: '0 6px 18px rgba(0,0,0,0.6)' }}>Welcome to {APP_NAME}</h1>
+						<p className="mt-4 text-lg sm:text-xl text-white/95 max-w-3xl mx-auto" style={{ textShadow: '0 4px 12px rgba(0,0,0,0.45)' }}>A lightweight, secure library management experience built for librarians and borrowers. Fast searches, clear workflows, and an interface that respects your time.</p>
+						<div className="mt-8 flex items-center justify-center gap-4">
+							<Link to="/login" className="primary-btn">Sign in</Link>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* Features */}
-			<section id="features" className="bg-white border-t border-slate-200/60">
-				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-						<h2 className="text-2xl sm:text-3xl font-bold text-[--text] text-center">
-						Everything you need to run a modern library
-					</h2>
-					<div className="mt-10 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-						<FeatureCard title="Catalog Management" desc="Add, edit, and categorize books with ISBN, authors, and availability." emoji="🗂️" />
-						<FeatureCard title="Smart Search" desc="Find books and members instantly with fast, fuzzy search." emoji="🔎" />
-						<FeatureCard title="Borrow Tracking" desc="Issue and return books with due date reminders and status." emoji="⏱️" />
-						<FeatureCard title="Member Profiles" desc="Manage members, contact details, and borrowing history." emoji="👤" />
-						<FeatureCard title="Notifications" desc="Stay on top with toast alerts for key actions and errors." emoji="🔔" />
-						<FeatureCard title="Secure Access" desc="Role-based access with token authentication." emoji="🛡️" />
+			<section id="about" className="py-12 bg-[var(--surface)]">
+				<div className="mx-auto max-w-6xl px-6 grid md:grid-cols-3 gap-6">
+					<div className="card">
+						<h3 className="font-semibold text-[--text]">Purpose</h3>
+						<p className="mt-2 text-[--muted] text-sm">Help libraries manage collections and patrons with minimal setup and clear, role-based access.</p>
+					</div>
+					<div className="card">
+						<h3 className="font-semibold text-[--text]">Design</h3>
+						<p className="mt-2 text-[--muted] text-sm">Responsive UI, dark mode support, and accessible controls so staff and patrons can use it on any device.</p>
+					</div>
+					<div className="card">
+						<h3 className="font-semibold text-[--text]">Security</h3>
+						<p className="mt-2 text-[--muted] text-sm">Token-based auth, role authorization, and clear separation of librarian vs borrower workflows.</p>
 					</div>
 				</div>
 			</section>
 
-			{/* CTA */}
-			<section className="bg-primary-gradient text-white">
-				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 flex flex-col md:flex-row items-center justify-between gap-6">
-					<div>
-						<h3 className="text-2xl sm:text-3xl font-bold">Ready to simplify your library?</h3>
-						<p className="mt-2 text-blue-100">Login to your dashboard and start managing today.</p>
+
+			{/* About us (bottom) */}
+			<section id="about-us" className="py-12 bg-[var(--surface)]">
+				<div className="mx-auto max-w-6xl px-6">
+					<h2 className="text-2xl font-bold text-[--text] text-center">About {APP_NAME}</h2>
+					<p className="mt-3 text-[--muted] text-center max-w-2xl mx-auto">{APP_NAME} was created to give small and medium libraries an easy-to-use, secure, and fast system for managing books, members, and borrowing. We focus on clarity, accessibility, and minimizing administrative overhead so libraries can focus on readers.</p>
+					<div className="mt-8 grid gap-6 md:grid-cols-3">
+						<div className="card">
+							<h3 className="font-semibold text-[--text]">Our mission</h3>
+							<p className="mt-2 text-[--muted] text-sm">Empower libraries with software that is simple, reliable, and respectful of privacy.</p>
+						</div>
+						<div className="card">
+							<h3 className="font-semibold text-[--text]">Community</h3>
+							<p className="mt-2 text-[--muted] text-sm">We design for librarians and patrons — accessibility and discoverability are core principles.</p>
+						</div>
+						<div className="card">
+							<h3 className="font-semibold text-[--text]">Support</h3>
+							<p className="mt-2 text-[--muted] text-sm">If you need help, reach out to your system administrator or open an issue in the project repository for assistance.</p>
+						</div>
 					</div>
-					<Link
-						to="/login"
-						className="inline-flex items-center justify-center rounded-md bg-white px-5 py-2.5 text-blue-700 font-semibold shadow-sm hover:bg-blue-50"
-					>
-						Go to Login
-					</Link>
 				</div>
 			</section>
 
-			{/* Footer */}
-			<footer className="border-t border-slate-200/60 bg-white">
+			<footer className="border-t border-slate-200/60 bg-[var(--surface)]">
 				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-[--muted]">
-							© {new Date().getFullYear()} {APP_NAME}. All rights reserved.
+					© {new Date().getFullYear()} {APP_NAME}. All rights reserved.
 				</div>
 			</footer>
 		</main>

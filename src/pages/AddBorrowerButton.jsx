@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaUserPlus } from "react-icons/fa";
 import {useAuth} from "../context/AuthContext";
 import { toast } from "react-toastify";
-import axios from "axios";
+import api from '../config/config';
 
 export default function AddBorrowerButton({ onClick, className }) {
   const [open, setOpen] = useState(false);
@@ -29,16 +29,24 @@ export default function AddBorrowerButton({ onClick, className }) {
       setOpen(false);
       return;
     }
-    const response = await axios.post("http://localhost:8000/api/borrowers", form, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-    console.log("Borrower added:", response.data);
-    toast.success("Borrower added");
+    // Backend expects POST /register with role and password, protected by token and librarian role
+    const payload = {
+      name: form.name,
+      email: form.email,
+      password: form.password,
+      role: form.role || 'Borrower',
+    };
+    const response = await api.post('/register', payload);
+    console.log('Borrower added:', response.data);
+    toast.success(response.data?.message || 'Borrower added');
+    // clear and close
+    setForm({});
+    setOpen(false);
+    try { window.dispatchEvent(new CustomEvent('borrowerListChanged')); } catch (e) {}
   } catch (error) {
     console.error("Error adding borrower:", error);
+    const msg = error?.response?.data?.message || error.message || 'Failed to add borrower';
+    toast.error(String(msg));
   }
   };
  
@@ -107,6 +115,28 @@ export default function AddBorrowerButton({ onClick, className }) {
                   className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-200"
                 />
               </div>
+
+              <div>
+                <label
+                  htmlFor="password"
+                  className="mb-1 block text-sm font-medium text-gray-700"
+                >
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={form.password}
+                  onChange={handleChange}
+                  placeholder="Create a temporary password"
+                  required
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-200"
+                />
+              </div>
+
+              {/* role hidden (defaults to Borrower) */}
+              <input type="hidden" name="role" value={form.role || 'Borrower'} />
 
               <div className="mt-6 flex items-center justify-end gap-3">
                 <button type="button" onClick={close} className="rounded-md border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
