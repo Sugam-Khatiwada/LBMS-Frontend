@@ -22,7 +22,7 @@ export default function Book() {
     const localAxios = axios.create();
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     const safeGet = (hdrs) =>
-      localAxios.get('http://localhost:8000/api/books', {
+      localAxios.get('https://librarymanagementsystem-48c3.onrender.com/api/books', {
         headers: hdrs,
         validateStatus: (status) => status < 500,
       });

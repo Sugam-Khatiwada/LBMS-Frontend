@@ -22,13 +22,13 @@ export default function Books(){
       try {
         // first try with token if available
         const headers = token ? { Authorization: `Bearer ${token}` } : {};
-        const res = await axios.get('http://localhost:8000/api/books', { headers });
+        const res = await axios.get('https://librarymanagementsystem-48c3.onrender.com/api/books', { headers });
         if (!mounted) return;
         setBooks(res.data?.books || res.data || []);
       } catch (err) {
         // if token failed or forbidden, try without auth (some backends allow public GET)
         try {
-          const res2 = await axios.get('http://localhost:8000/api/books');
+          const res2 = await axios.get('https://librarymanagementsystem-48c3.onrender.com/api/books');
           if (!mounted) return;
           setBooks(res2.data?.books || res2.data || []);
         } catch (err2) {

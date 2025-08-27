@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Base URL for all API requests.
 // Used by the axios instance below to build request URLs.
-export const baseURL = 'http://localhost:8000/api';
+export const baseURL = 'https://librarymanagementsystem-48c3.onrender.com/api';
 // Application display name (used across UI for consistent branding)
 export const APP_NAME = 'BookHub';
 

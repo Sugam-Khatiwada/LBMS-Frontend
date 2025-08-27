@@ -62,7 +62,7 @@ export default function EditBookModal({ book, open, onClose, onSaved, fetchBooks
       let lastError = null;
       for (const ident of tryIdentifiers) {
         try {
-          const url = `http://localhost:8000/api/books/${encodeURIComponent(ident)}`;
+          const url = `https://librarymanagementsystem-48c3.onrender.com/api/books/${encodeURIComponent(ident)}`;
           console.debug('Attempting PUT to', url, 'payload:', payload);
           const res = await axios.put(url, payload, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, validateStatus: (s) => s < 500 });
           console.debug('PUT response', res.status, res.data);

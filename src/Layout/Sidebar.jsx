@@ -34,7 +34,7 @@ export function Sidebar() {
     const loadTop = async () => {
       try {
         // borrow records endpoint used in Dashboard
-        const borRes = await axios.get('http://localhost:8000/api/borrowers', { headers: hdrs });
+        const borRes = await axios.get('https://librarymanagementsystem-48c3.onrender.com/api/borrowers', { headers: hdrs });
         const borrows = Array.isArray(borRes.data) ? borRes.data : (Array.isArray(borRes.data?.borrowers) ? borRes.data.borrowers : []);
         // count by book
         const bookCounts = {};
@@ -49,7 +49,7 @@ export function Sidebar() {
         if (topBookId) {
           // try to fetch book details if possible
           try {
-            const bookRes = await axios.get('http://localhost:8000/api/books', { params: { id: topBookId }, headers: hdrs });
+            const bookRes = await axios.get('https://librarymanagementsystem-48c3.onrender.com/api/books', { params: { id: topBookId }, headers: hdrs });
             const bdata = Array.isArray(bookRes.data) ? bookRes.data[0] : (bookRes.data?.books ? bookRes.data.books[0] : bookRes.data);
             topBookTitle = bdata?.title || bdata?.name || String(topBookId);
           } catch (e) {
@@ -62,7 +62,7 @@ export function Sidebar() {
           let bookDetails = { id: topBookId, title: topBookTitle, author: null, isbn: null, count };
           try {
             // try a more flexible fetch for the book by id or isbn
-            const bookRes2 = await axios.get('http://localhost:8000/api/books', { params: { id: topBookId }, headers: hdrs, validateStatus: (s) => s < 500 });
+            const bookRes2 = await axios.get('https://librarymanagementsystem-48c3.onrender.com/api/books', { params: { id: topBookId }, headers: hdrs, validateStatus: (s) => s < 500 });
             const data2 = Array.isArray(bookRes2.data) ? bookRes2.data[0] : (bookRes2.data?.books ? bookRes2.data.books[0] : bookRes2.data);
             if (data2) {
               bookDetails = {

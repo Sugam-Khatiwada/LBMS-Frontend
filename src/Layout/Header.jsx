@@ -49,7 +49,7 @@ export function Header({ onToggleSidebar }) {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/books', { params: { q: searchTerm } });
+        const res = await axios.get('https://librarymanagementsystem-48c3.onrender.com/api/books', { params: { q: searchTerm } });
         const list = Array.isArray(res.data) ? res.data : (Array.isArray(res.data?.books) ? res.data.books : []);
         setSuggestions(list.slice(0, 10));
       } catch (err) {
@@ -72,7 +72,7 @@ export function Header({ onToggleSidebar }) {
   const handleSearch = async () => {
     if (!searchTerm || searchTerm.trim().length === 0) return;
     try {
-      const res = await axios.get('http://localhost:8000/api/books', { params: { q: searchTerm } });
+      const res = await axios.get('https://librarymanagementsystem-48c3.onrender.com/api/books', { params: { q: searchTerm } });
       const list = Array.isArray(res.data) ? res.data : (Array.isArray(res.data?.books) ? res.data.books : []);
       // navigate to books page and pass results in state
       navigate('/librarian/books', { state: { searchResults: list } });

@@ -24,7 +24,7 @@ export default function Borrowers() {
 
   const fetchBorrower = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/borrowers", {
+      const res = await axios.get("https://librarymanagementsystem-48c3.onrender.com/api/borrowers", {
         headers: token ? { Authorization: `Bearer ${token}` } : undefined,
       });
       if (res.status === 200) {
@@ -40,7 +40,7 @@ export default function Borrowers() {
         setBorrower(list);
         // also try to fetch books to resolve titles (bookId may be an ObjectId)
         try {
-          const bres = await axios.get('http://localhost:8000/api/books', { headers: token ? { Authorization: `Bearer ${token}` } : {} });
+          const bres = await axios.get('https://librarymanagementsystem-48c3.onrender.com/api/books', { headers: token ? { Authorization: `Bearer ${token}` } : {} });
           const bdata = bres.data || [];
           const map = {};
           if (Array.isArray(bdata)) {
@@ -67,7 +67,7 @@ export default function Borrowers() {
     if (!borrowId) return toast.error('Missing borrow id');
     if (!window.confirm('Mark this borrow as returned?')) return;
     try {
-      const res = await axios.put(`http://localhost:8000/api/borrowers/${encodeURIComponent(borrowId)}`, { returnDate: new Date().toISOString() }, { headers: token ? { Authorization: `Bearer ${token}` } : {} });
+      const res = await axios.put(`https://librarymanagementsystem-48c3.onrender.com/api/borrowers/${encodeURIComponent(borrowId)}`, { returnDate: new Date().toISOString() }, { headers: token ? { Authorization: `Bearer ${token}` } : {} });
       // update local state
       setBorrower((s) => s.map(b => ((b._id === borrowId || b.id === borrowId) ? (res.data?.borrow || res.data || b) : b)));
       toast.success(res?.data?.message || 'Borrow updated');
@@ -82,7 +82,7 @@ export default function Borrowers() {
     if (!borrowId) return toast.error('Missing borrow id');
     if (!window.confirm('Delete this borrow record?')) return;
     try {
-      const res = await axios.delete(`http://localhost:8000/api/borrowers/${encodeURIComponent(borrowId)}`, { headers: token ? { Authorization: `Bearer ${token}` } : {} });
+      const res = await axios.delete(`https://librarymanagementsystem-48c3.onrender.com/api/borrowers/${encodeURIComponent(borrowId)}`, { headers: token ? { Authorization: `Bearer ${token}` } : {} });
       setBorrower((s) => s.filter(b => !((b._id === borrowId) || (b.id === borrowId))));
       toast.success(res?.data?.message || 'Borrow deleted');
     } catch (err) {
