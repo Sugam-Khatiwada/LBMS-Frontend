@@ -237,38 +237,38 @@ export default function BookTable({ books: initialBooks, onEdit }) {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200 bg-white">
-        <thead className="bg-gray-50">
+      <table className="min-w-full divide-y divide-slate-200 bg-[var(--surface)]">
+        <thead className="bg-[var(--surface)]">
           <tr>
-            <th className="px-4 py-2 text-left text-xs font-medium text-gray-500">Title</th>
-            <th className="px-4 py-2 text-left text-xs font-medium text-gray-500">ISBN</th>
-            <th className="px-4 py-2 text-left text-xs font-medium text-gray-500">Quantity</th>
-            <th className="px-4 py-2 text-left text-xs font-medium text-gray-500">Available</th>
-            <th className="px-4 py-2 text-left text-xs font-medium text-gray-500">Actions</th>
+            <th className="px-4 py-2 text-left text-xs font-medium text-[--muted]">Title</th>
+            <th className="px-4 py-2 text-left text-xs font-medium text-[--muted]">ISBN</th>
+            <th className="px-4 py-2 text-left text-xs font-medium text-[--muted]">Quantity</th>
+            <th className="px-4 py-2 text-left text-xs font-medium text-[--muted]">Available</th>
+            <th className="px-4 py-2 text-left text-xs font-medium text-[--muted]">Actions</th>
           </tr>
         </thead>
         <tbody>
           {books.map((b) => (
             <tr key={b._id || b.isbn || b.id} className="border-t">
-              <td className="px-4 py-3 text-sm text-gray-800">{b.title}</td>
-              <td className="px-4 py-3 text-sm text-gray-600">{b.isbn}</td>
-              <td className="px-4 py-3 text-sm text-gray-600">{b.quantity ?? b.total ?? 0}</td>
-              <td className="px-4 py-3 text-sm text-gray-600">{b.availableBooks ?? b.available ?? 0}</td>
-              <td className="px-4 py-3 text-sm text-gray-600 flex items-center gap-3">
+              <td className="px-4 py-3 text-sm text-[--text]">{b.title}</td>
+              <td className="px-4 py-3 text-sm text-[--muted]">{b.isbn}</td>
+              <td className="px-4 py-3 text-sm text-[--muted]">{b.quantity ?? b.total ?? 0}</td>
+              <td className="px-4 py-3 text-sm text-[--muted]">{b.availableBooks ?? b.available ?? 0}</td>
+              <td className="px-4 py-3 text-sm text-[--muted] flex items-center gap-3">
                 {isLibrarian && (
                   <>
                     {typeof onEdit === 'function' ? (
-                      <button onClick={() => onEdit(b)} title="Edit" className="text-blue-600 hover:text-blue-800">Edit</button>
+                      <button onClick={() => onEdit(b)} title="Edit" className="btn-ghost-primary px-3 py-1 rounded text-sm">Edit</button>
                     ) : (
-                      <button onClick={() => handleEdit(b.isbn)} title="Edit" className="text-blue-600 hover:text-blue-800">Edit</button>
+                      <button onClick={() => handleEdit(b.isbn)} title="Edit" className="btn-ghost-primary px-3 py-1 rounded text-sm">Edit</button>
                     )}
-                    <button onClick={() => handleDelete(b.isbn)} title="Delete" className="text-red-600 hover:text-red-800">Delete</button>
+                    <button onClick={() => handleDelete(b.isbn)} title="Delete" className="rounded px-3 py-1 bg-accent text-[--text] hover:opacity-95">Delete</button>
                   </>
                 )}
                 {isBorrower && (
                   <>
-                    <button onClick={() => handleBorrow(b)} title="Borrow" className="ml-2 rounded px-2 py-1 text-white bg-green-600 hover:bg-green-700">Borrow</button>
-                    <button onClick={() => handleReturn(b)} title="Return" className="ml-2 rounded px-2 py-1 text-white bg-yellow-500 hover:bg-yellow-600">Return</button>
+                    <button onClick={() => handleBorrow(b)} title="Borrow" className="ml-2 primary-btn px-3 py-1 text-sm">Borrow</button>
+                    <button onClick={() => handleReturn(b)} title="Return" className="ml-2 rounded px-3 py-1 bg-accent text-[--text] hover:opacity-95">Return</button>
                   </>
                 )}
               </td>

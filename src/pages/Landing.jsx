@@ -5,15 +5,15 @@ import { APP_NAME } from '../config/config';
 
 export default function Landing() {
 	return (
-		<main className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800">
+		<main className="min-h-screen bg-gradient-to-b from-primary/10 to-transparent text-[--text] dark:text-white">
 			{/* Header */}
-			<header className="border-b border-slate-200/60 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-10">
+			<header className="border-b border-slate-200/60 bg-[var(--surface)]/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-10">
 				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
 					<div className="flex items-center gap-3">
 						<Logo size={8} showText={true} className="items-center" />
 					</div>
 					<nav className="hidden sm:flex items-center gap-4 text-sm">
-						<Link to="/login" className="text-slate-600 hover:text-blue-700 rounded-xl bg-secondary w-[100px] text-center h-[30px] font-semibold py-1 ">
+						<Link to="/login" className="text-[--muted] hover:text-[--text] rounded-xl bg-secondary w-[100px] text-center h-[30px] font-semibold py-1 ">
 							Login
 						</Link>
 					</nav>
@@ -24,10 +24,10 @@ export default function Landing() {
 			<section className="relative">
 				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
 					<div>
-						<h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
+						<h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[--text]">
 							Manage your library with ease
 						</h1>
-						<p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+						<p className="mt-4 text-base sm:text-lg text-[--muted] leading-relaxed">
 							A simple, fast, and reliable Library Management System for
 							librarians to track books, members, and borrow records—all in one
 							place.
@@ -40,13 +40,13 @@ export default function Landing() {
 								Get Started
 							</Link>
 							<a
-								href="#features"
-								className="inline-flex items-center justify-center rounded-md border border-slate-300 px-5 py-2.5 text-slate-700 font-medium hover:bg-slate-50"
+							href="#features"
+							className="inline-flex items-center justify-center rounded-md border border-[rgba(0,0,0,0.06)] px-5 py-2.5 text-[--muted] font-medium hover:bg-[var(--surface)]/60"
 							>
 								Learn more
 							</a>
 						</div>
-						<div className="mt-6 flex items-center gap-6 text-sm text-slate-500">
+						<div className="mt-6 flex items-center gap-6 text-sm text-[--muted]">
 							<div>
 								<span className="font-semibold text-slate-900">Secure</span> auth
 							</div>
@@ -59,7 +59,7 @@ export default function Landing() {
 						</div>
 					</div>
 					<div className="relative">
-						<div className="rounded-xl border border-slate-200 bg-white shadow-sm p-5 sm:p-6">
+						<div className="rounded-xl border border-slate-200 bg-[var(--surface)] shadow-sm p-5 sm:p-6">
 							<div className="grid grid-cols-2 gap-3 text-center">
 								<div className="rounded-lg bg-blue-50 p-6">
 									<div className="text-3xl">📚</div>
@@ -94,7 +94,7 @@ export default function Landing() {
 			{/* Features */}
 			<section id="features" className="bg-white border-t border-slate-200/60">
 				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-					<h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center">
+						<h2 className="text-2xl sm:text-3xl font-bold text-[--text] text-center">
 						Everything you need to run a modern library
 					</h2>
 					<div className="mt-10 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -109,7 +109,7 @@ export default function Landing() {
 			</section>
 
 			{/* CTA */}
-			<section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+			<section className="bg-primary-gradient text-white">
 				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 flex flex-col md:flex-row items-center justify-between gap-6">
 					<div>
 						<h3 className="text-2xl sm:text-3xl font-bold">Ready to simplify your library?</h3>
@@ -126,8 +126,8 @@ export default function Landing() {
 
 			{/* Footer */}
 			<footer className="border-t border-slate-200/60 bg-white">
-				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-slate-500">
-						© {new Date().getFullYear()} {APP_NAME}. All rights reserved.
+				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-[--muted]">
+							© {new Date().getFullYear()} {APP_NAME}. All rights reserved.
 				</div>
 			</footer>
 		</main>
@@ -136,7 +136,7 @@ export default function Landing() {
 
 function FeatureCard({ title, desc, emoji }) {
 	return (
-		<div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow">
+						<div className="rounded-xl border border-slate-200 bg-[var(--surface)] p-5 shadow-sm hover:shadow-md transition-shadow">
 			<div className="text-2xl">{emoji}</div>
 			<h3 className="mt-3 text-lg font-semibold text-slate-900">{title}</h3>
 			<p className="mt-1 text-sm text-slate-600 leading-relaxed">{desc}</p>

@@ -71,29 +71,29 @@ export function BorrowerDashboard() {
   const holds = loans.filter((l) => l.status === "hold" || l.status === "on-hold").length;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[var(--surface)]">
       <Header />
       <div className="flex">
         <main className="flex-1 p-6">
           <div className="mb-6 flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-secondary">Welcome back</h1>
-              <p className="text-sm text-gray-500">Here's your borrowing activity and quick actions.</p>
+              <h1 className="text-2xl font-bold text-[--text]">Welcome back</h1>
+              <p className="text-sm text-[--muted]">Here's your borrowing activity and quick actions.</p>
             </div>
           </div>
 
           <section className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-              <div className="text-xs font-semibold text-gray-500">Active Loans</div>
-              <div className="mt-2 text-2xl font-bold text-gray-800">{activeLoans.length}</div>
+            <div className="rounded-lg border border-slate-200 bg-[var(--surface)] p-4 shadow-sm">
+              <div className="text-xs font-semibold text-[--muted]">Active Loans</div>
+              <div className="mt-2 text-2xl font-bold text-[--text]">{activeLoans.length}</div>
             </div>
-            <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-              <div className="text-xs font-semibold text-gray-500">Overdue</div>
-              <div className="mt-2 text-2xl font-bold text-gray-800">{overdue.length}</div>
+            <div className="rounded-lg border border-slate-200 bg-[var(--surface)] p-4 shadow-sm">
+              <div className="text-xs font-semibold text-[--muted]">Overdue</div>
+              <div className="mt-2 text-2xl font-bold text-[--text]">{overdue.length}</div>
             </div>
-            <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-              <div className="text-xs font-semibold text-gray-500">Holds</div>
-              <div className="mt-2 text-2xl font-bold text-gray-800">{holds}</div>
+            <div className="rounded-lg border border-slate-200 bg-[var(--surface)] p-4 shadow-sm">
+              <div className="text-xs font-semibold text-[--muted]">Holds</div>
+              <div className="mt-2 text-2xl font-bold text-[--text]">{holds}</div>
             </div>
           </section>
 
@@ -110,8 +110,8 @@ export function BorrowerDashboard() {
               ) : loans.length === 0 ? (
                 <div className="p-6 text-center text-sm text-gray-500">You have no active loans.</div>
               ) : (
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                <table className="min-w-full divide-y divide-slate-200">
+                  <thead className="bg-[var(--surface)]">
                     <tr>
                       <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-600">Book Name</th>
                       <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-600">ISBN</th>
@@ -128,10 +128,10 @@ export function BorrowerDashboard() {
                       const isbn = l.book?.isbn ?? l.isbn ?? l.ISBN ?? book?.isbn ?? "-";
                       return (
                         <tr key={borrowId ?? i} className="hover:bg-gray-50">
-                          <td className="px-4 py-3 text-sm text-gray-900">{bookName}</td>
-                          <td className="px-4 py-3 text-sm text-gray-700">{isbn}</td>
-                          <td className="px-4 py-3 text-sm text-gray-700">{fmt(l.borrowDate ?? l.borrow_date ?? l.borrowedAt ?? l.borrowed_at)}</td>
-                          <td className="px-4 py-3 text-sm text-gray-700">{fmt(l.returnDate ?? l.return_date ?? l.dueDate ?? l.due_date ?? l.returnedAt ?? l.returned_at)}</td>
+                          <td className="px-4 py-3 text-sm text-[--text]">{bookName}</td>
+                          <td className="px-4 py-3 text-sm text-[--muted]">{isbn}</td>
+                          <td className="px-4 py-3 text-sm text-[--muted]">{fmt(l.borrowDate ?? l.borrow_date ?? l.borrowedAt ?? l.borrowed_at)}</td>
+                          <td className="px-4 py-3 text-sm text-[--muted]">{fmt(l.returnDate ?? l.return_date ?? l.dueDate ?? l.due_date ?? l.returnedAt ?? l.returned_at)}</td>
                           <td className="px-4 py-3 text-right">
                             <div className="inline-flex gap-2">
                               <button
@@ -233,7 +233,7 @@ export function BorrowerDashboard() {
                                     toast.error(String(serverMsg));
                                   }
                                 }}
-                                className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-600"
+                                className="rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-white hover:opacity-95"
                               >
                                 Return
                               </button>
@@ -249,9 +249,9 @@ export function BorrowerDashboard() {
           </section>
 
           <section className="mt-8 max-w-md">
-            <div className="rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900 shadow-sm">
-              <div className="mb-2 font-semibold text-blue-800">Getting started</div>
-              <ul className="list-disc pl-5 text-blue-900">
+            <div className="rounded-xl border border-slate-200 bg-[var(--surface)] p-4 text-sm text-[--muted] shadow-sm">
+              <div className="mb-2 font-semibold text-[--text]">Getting started</div>
+              <ul className="list-disc pl-5 text-[--muted]">
                 <li>View your active loans and due dates.</li>
                 <li>Use Renew or Return actions to manage loans.</li>
                 <li>Use Books to browse the catalog and place holds.</li>

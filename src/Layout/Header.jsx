@@ -99,11 +99,12 @@ export function Header({ onToggleSidebar }) {
     )
   );
 
-  // quick librarian check to style header links for the librarian hero bar
+  // quick librarian check to style header links for the hero bar (apply same hero for borrower)
   const isLibrarian = !!(user && ((typeof user.role === 'string' && user.role.toLowerCase().includes('librarian')) || (Array.isArray(user.roles) && user.roles.some(r => String(r).toLowerCase().includes('librarian')))));
+  const isHero = isLibrarian || isBorrower; // show hero styling for borrower as well
 
   const navLinkClass = (active) => {
-    if (isLibrarian) {
+    if (isHero) {
       return `px-3 py-2 rounded-md text-sm font-medium ${active ? 'bg-white/20 text-white' : 'text-white/90 hover:bg-white/10'}`;
     }
     return `px-3 py-2 rounded-md text-sm font-medium ${active ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`;
@@ -114,7 +115,7 @@ export function Header({ onToggleSidebar }) {
   const closeAccount = () => setAccountOpen(false);
 
   return (
-    <header className={`${isLibrarian ? 'header-hero' : 'bg-white shadow'} sticky top-0 z-50`}>
+  <header className={`${(isLibrarian || isBorrower) ? 'header-hero' : 'bg-white shadow'} sticky top-0 z-50`}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         {/* Left column aligned with sidebar: show branding above sidebar area on lg+ */}
         <div className="hidden lg:flex w-56 items-center">
