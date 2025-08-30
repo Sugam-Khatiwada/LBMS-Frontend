@@ -2,8 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-  <!-- Inline SVG favicon to ensure BookHub branding (avoids needing a binary favicon.ico) -->
-  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%236b21a8'/><text x='32' y='42' font-size='28' font-family='Arial' font-weight='700' fill='%23ffffff' text-anchor='middle'>B</text></svg>" />
+  <!-- Prefer file-based SVG favicon so browsers pick it up and cache correctly -->
+  <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+  <!-- Inline fallback for older browsers -->
+  <link rel="shortcut icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%236b21a8'/><text x='32' y='42' font-size='28' font-family='Arial' font-weight='700' fill='%23ffffff' text-anchor='middle'>B</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
