@@ -1,6 +1,30 @@
-# Getting Started with Create React App
+# BookHub — Library Management (LBMS Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A lightweight, secure library management UI for librarians and borrowers. This repository contains the React frontend used to demo and operate BookHub.
+
+Preview
+-------
+
+The image below will be shown on the GitHub project page as a preview. Add a screenshot named `landing-preview.png` to the `public/` folder to replace the placeholder.
+
+![Landing preview](./public/landing-preview.png)
+
+If you don't yet have a screenshot, the app icon will be shown instead:
+
+![App icon](./public/logo192.png)
+
+Quick features
+- Role-aware UI (Librarian / Borrower)
+- Searchable books table and borrower management
+- Add / Edit workflows and dashboard insights
+- Light and dark theme support
+
+How to update the preview
+1. Add a PNG/JPEG screenshot file at `public/landing-preview.png`.
+2. Commit and push to GitHub. The README will render the image automatically on the repository page.
+
+Deployment preview (GitHub Pages)
+- If you publish this app with GitHub Pages, you can link the live URL here for a live preview.
 
 ## Available Scripts
 
